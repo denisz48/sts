@@ -1,0 +1,51 @@
+
+  body, html {
+    height: 100%;
+    margin: 0;
+    background-image: url("/static/background.svg");
+    background-attachment: fixed;
+    background-size: cover;
+  
+  }
+
+h1{
+    color: #6680eb !important;
+}
+
+.container{
+    margin-top: 5%;
+}
+
+.card-header{
+    background-color: rgb(255, 255, 255) !important;
+    border: 3px solid rgba(61, 134, 237, 0.125) !important;
+}
+
+.text-input {
+    padding: 0.8rem;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #0d6efd;
+    border-radius: 5px;
+    font-size: 18px;
+    outline: none;
+    transition: all 0.3s;
+    color: rgb(0, 0, 0);
+}
+
+.label {
+    top: 20px;
+    color: #0d6efd;
+    font-size: 14px;
+}
+
+#messages {
+background-color: grey;
+color: #fff;
+padding: 10px;
+margin-top: 10px;
+}
+
+.alert {
+    display:none;
+}
