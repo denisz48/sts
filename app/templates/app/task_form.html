@@ -1,0 +1,51 @@
+{% extends 'app/main.html' %}
+{% block style %}
+<style>
+
+    textarea {
+    width: calc(100% - 12px);
+    padding: 5px;
+    }
+
+    form {
+    width: 60%;
+    padding: 20px;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 0 8px  #669999; 
+    }
+
+    input, textarea {
+    margin-bottom: 10px;
+    border: 1px solid #0d6efd;
+    border-radius: 5px;
+    font-size: 18px;
+    width: calc(100% - 10px);
+    padding: 5px;
+    }
+    
+    input[type=checkbox]{
+        max-width: 5%;
+        padding: 0%;
+    }
+    label {
+        top: 20px;
+        color: #0d6efd;
+        font-size: 16px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+<div class="container mlr-auto">
+    <div class="card-body mlr-auto">
+        <form method="POST" action="" class="mlr-auto">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-success" type="submit">Submit</button>
+            <a type="button" href="{% url 'tasks' %}" class="btn btn-danger">Cancel</a>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

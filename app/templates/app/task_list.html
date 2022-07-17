@@ -1,0 +1,112 @@
+{% extends 'app/main.html' %} 
+{% block style %}
+<style>
+    .card-header{
+        background-color: #fff ;
+        text-align: center;
+        border: #cf4949;
+    }
+    .task{
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 35%;
+    }
+    .task-controls{
+        margin-right: 5%;
+    }
+
+    .task-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(238 241 253);
+        border: 1px solid #2348e2;
+        overflow: hidden;
+        border-radius: 10px;
+        font-weight: bold;
+        margin-top: 5%;
+    }
+
+    .task-title {
+        display: flex;
+        padding: 20px;
+    }
+
+    .task-title a {
+        text-decoration: none;
+        color: #010407;
+        margin-left: 10px;
+    }
+
+    .task-complete-icon {
+        height: 20px;
+        width: 20px;
+        background-color: rgb(105, 192, 105);
+        border-radius: 50%;
+    }
+
+    .task-incomplete-icon {
+        height: 20px;
+        width: 20px;
+        background-color: rgb(218, 218, 218);
+        border-radius: 50%;
+    }
+    .delete-link {
+        text-decoration: none;
+        font-weight: 900;
+        color: #cf4949;
+        font-size: 22px;
+        line-height: 0;
+        padding: 20px 0px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col-1 mt-1" style="text-align: center;">
+        <a type="button" class="btn btn-success" href="{% url 'task-create' %}">Add Task</a>
+    </div>
+</div>
+
+<!-- Hidden form. Form submits new item positions -->
+<form style="display: none;" id="reorderForm" method="post" action="{% url 'task-reorder' %}">
+    {% csrf_token %}
+    <input type="hidden" id="positionInput" name="position">
+</form>
+
+<div class="row mt-2">
+<div id="tasklist" class="task">
+    {% if count > 0 %}
+    <div class="card-header">
+        <h3 style="margin:0">You have {{count}} incomplete task{{ count|pluralize:"s" }}</h3>
+    </div>
+    {% endif %}
+    {% for task in tasks %}
+    <div class="task-wrapper" data-position="{{task.pk}}">
+        <div class="task-title">
+            {% if task.is_complete %}
+            <div class="task-complete-icon"></div>
+            <i><s><a href="{% url 'task-update' task.id %}">{{task}}</a></s></i> {% else %}
+            <div class="task-incomplete-icon"></div>
+            <a href="{% url 'task-update' task.id %}">{{task}}</a> {% endif %}
+        </div>
+        <div class="task-controls">
+            <a class="btn btn-outline-danger" href="{% url 'task-delete' task.id %}"><i class="bi bi-trash"></i></a>
+            <a class="btn btn-outline-success" href="{% url 'task-update' task.id %}"><i class="bi bi-pencil-square"></i></a>
+        </div>
+    </div>
+
+    {% empty %}
+    <div style="text-align: center; padding-bottom: 10px; line-height: 1em;">
+        <h3>No new tasks are created.</h3>
+        <h3>Create a <a style="text-decoration: none; color: #e53935;" href="{% url 'task-create' %}">New task</a> ! </h3>
+    </div>
+    {% endfor %}
+</div>
+</div>
+
+
+{% endblock content %}
+

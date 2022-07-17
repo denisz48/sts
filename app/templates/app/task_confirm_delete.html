@@ -1,0 +1,22 @@
+{% extends 'app/main.html' %}
+{% block style %}
+<style>
+    .card-body{
+        max-width: 30%;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+<div class="card-body mlr-auto">
+    <form method="POST">
+        {% csrf_token %}
+        <p>Are your sure you want to delete this task? <b>"{{task}}"</b> </p>
+        <button class="btn btn-danger" type="submit">Delete</button>
+        <a class="btn btn-secondary" href="{% url 'tasks' %}">Cancel</a>
+    </form>
+</div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,67 @@
+{% extends 'app/main.html' %}
+{% load static %}
+{% block content %}
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Welcome </h2>
+                <p class="animate__animated animate__fadeInUp">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                <a href="#" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Featured Section ======= -->
+    <section id="featured" class="featured">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="icon-box">
+                <i class="bi bi-patch-question"></i>
+              <h3><a href="{% url 'quiz-main-view' %}">Quiz</a></h3>
+              <p>Try your hand at our quiz.</p>
+              <a type="button" href="{% url 'quiz-main-view' %}"" class="btn btn-secondary animate__animated animate__fadeInUp" style="float: right;">Try !</a>
+            </div>
+          </div>
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="icon-box">
+                <i class="bi bi-card-checklist"></i>
+              <h3><a href="{% url 'tasks' %}">To Do</a></h3>
+              <p>Add your tasks so you don't forget them !</p>
+              <a type="button" href="{% url 'tasks' %}" class="btn btn-secondary animate__animated animate__fadeInUp" style="float: right;">Try !</a>
+            </div>
+          </div>
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="icon-box">
+                <i class="bi bi-cloud-sun"></i>
+              <h3><a href="{% url 'weather' %}">Wheather</a></h3>
+              <p>Add a city and check the weather.</p>
+              <a type="button" href="{% url 'weather' %}" class="btn btn-secondary animate__animated animate__fadeInUp" style="float: right;">Try !</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Featured Section -->
+
+  </main><!-- End #main -->
+{% endblock %}
