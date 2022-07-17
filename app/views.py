@@ -178,7 +178,7 @@ def save_quiz_view(request, pk):
     
     
 def weather(request):
-    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=271d1234d3f497eed5b1d80a07b3fcd1'
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=271d1234d3f497eed5b1d80a07b3fcd1'
 
     err_msg = ''
     message = ''
